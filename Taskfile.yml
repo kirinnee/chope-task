@@ -1,0 +1,66 @@
+version: "3"
+
+tasks:
+  cfg:scripts:
+    desc: Configure Scripts to be executable
+    cmds:
+      - chmod -R +x ./scripts
+  getpw: 
+    desc: Gets GitLab root password
+    cmds:
+      - kubectl get secret gitlab-gitlab-initial-root-password -ojsonpath='{.data.password}' | base64 --decode ; echo
+  up:
+    desc: Setup local cluster
+    cmds:
+      - ./scripts/local/create-k3d-cluster.sh {{.CLI_ARGS}}
+      - ./scripts/local/helm-deploy-gitlab.sh
+  down:
+    desc: Clears local cluster
+    cmds:
+      - ./scripts/local/delete-k3d-cluster.sh {{.CLI_ARGS}}
+
+  lint:
+    desc: Lints all important files
+    cmds:
+      - task: lint:sh
+
+  lint:sh:
+    desc: Lints shell scripts
+    cmds:
+      - shellcheck **/*.sh
+
+  fmt:
+    desc: Run all formatting supported.
+    ignore_error: true
+    summary: |
+      Runs all formatting supported.
+      1. Runs fmt:md, which formats all Markdown using prettier
+      2. Runs fmt:yaml, which formats all YAML using prettier
+      3. Runs fmt:nix, which formats all Nix files with nixpkgs-fmt
+      4. Runs fmt:sh, which format all sh files with shfmt
+    cmds:
+      - task: fmt:md
+      - task: fmt:yaml
+      - task: fmt:nix
+      - task: fmt:sh
+
+  fmt:sh:
+    desc: Formats shell scripts with shfmt
+    cmds:
+      - shfmt -w .
+  fmt:md:
+    ignore_error: true
+    desc: Formats Markdown with prettier
+    cmds:
+      - prettier -w "**/*.MD"
+  fmt:yaml:
+    ignore_error: true
+    desc: Formats YAML with prettier
+    cmds:
+      - prettier -w "**/*.yaml"
+      - prettier -w "**/*.yml"
+  fmt:nix:
+    ignore_error: true
+    desc: Formats Nix files
+    cmds:
+      - nixpkgs-fmt .

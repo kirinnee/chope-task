@@ -1,10 +1,3 @@
-{ nixpkgs ? import <nixpkgs> { } }:
-nixpkgs.mkShell {
-  buildInputs = [
-    nixpkgs.kube3d
-    nixpkgs.kubernetes-helm
-    nixpkgs.kubectl
-    nixpkgs.stern
-  ];
-
-}
+let nixpkgs = import <nixpkgs> { }; in
+let shells = import ./nix/shells.nix { inherit nixpkgs; }; in
+shells.dev

@@ -3,10 +3,14 @@ apiVersion: k3d.io/v1alpha2
 kind: Simple
 name: k3s-default
 servers: 1
-agents: 4
+agents: 2
 image: docker.io/rancher/k3s:v1.20.6-k3s1
 ports:
-  - port: 8080:80
+  - port: 80:80
     nodeFilters:
       - loadbalancer
-
+  - port: 32022:32022
+    nodeFilters:
+      - server[*]
+      - agent[*]
+    

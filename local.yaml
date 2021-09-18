@@ -16,18 +16,17 @@ global:
   hosts:
     https: false
     domain: 127.0.0.1.nip.io
-    externalIP: 127.0.0.1
+    externalIP: 127.30.0.1
   shell:
     port: 32022
 certmanager:
   install: false
 nginx-ingress:
   enabled: false
-# gitlab:
-#   gitlab-shell:
-#     service:
-#       type: NodePort
-#       nodePort: 32022
+ gitlab:
+   gitlab-shell:
+     service:
+       type: NodePort
+       nodePort: 32022
 gitlab-runner:
-  externalUrl: host.k3d.internal
   certsSecretName: gitlab-wildcard-tls-chain

@@ -29,5 +29,5 @@ gitlab:
       type: NodePort
       nodePort: 32022
 gitlab-runner:
-  gitlabUrl: gitlab-webservice-default:8080
+  gitlabUrl: http://gitlab-webservice-default:8080
   certsSecretName: gitlab-wildcard-tls-chain

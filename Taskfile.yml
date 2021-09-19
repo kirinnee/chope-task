@@ -19,6 +19,9 @@ tasks:
     cmds:
       - ./scripts/local/delete-k3d-cluster.sh {{.CLI_ARGS}}
 
+  apply:
+
+
   lint:
     desc: Lints all important files
     cmds:

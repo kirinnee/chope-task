@@ -23,10 +23,10 @@ certmanager:
   install: false
 nginx-ingress:
   enabled: false
- gitlab:
-   gitlab-shell:
-     service:
-       type: NodePort
-       nodePort: 32022
+gitlab:
+  gitlab-shell:
+    service:
+      type: NodePort
+      nodePort: 32022
 gitlab-runner:
   certsSecretName: gitlab-wildcard-tls-chain

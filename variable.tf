@@ -4,11 +4,6 @@ variable "region" {
   type        = string
 }
 
-variable "public_key" {
-  description = "SSH Public key for nodes"
-  type        = string
-}
-
 variable "server_nodes" {
   description = "Number of server nodes in the cluster. Must be even"
   default     = 2
@@ -45,14 +40,9 @@ variable "agent_node_type" {
   type        = string
 }
 
-variable "k3s_version" {
-  description = "K3S version"
-  default     = "v1.21.4"
-  type        = string
-}
 
-variable "k3s_channel" {
-  description = "K3S channel"
-  default     = "k3s1"
+variable "email" {
+  default     = "kirinnee97@gmail.com"
   type        = string
+  description = "Cert Manager issuer email"
 }

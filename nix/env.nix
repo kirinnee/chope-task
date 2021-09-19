@@ -23,6 +23,7 @@ with pkgs;
 
 
   lint = [
+    terraform-docs
     pre-commit
     nixpkgs-fmt
     prettier

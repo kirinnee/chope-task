@@ -10,6 +10,7 @@ let pkgs = {
     with import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/9f75aabfb06346e7677fc3ad53cc9b6669eead61.tar.gz") { };
     {
       inherit
+        terraform-docs
         pre-commit
         git
         shfmt

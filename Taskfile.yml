@@ -6,7 +6,7 @@ tasks:
     desc: Configure Scripts to be executable
     cmds:
       - chmod -R +x ./scripts
-  getpw: 
+  getpw:
     desc: Gets GitLab root password
     cmds:
       - kubectl get secret gitlab-gitlab-initial-root-password -ojsonpath='{.data.password}' | base64 --decode ; echo
@@ -21,15 +21,15 @@ tasks:
       - ./scripts/local/delete-k3d-cluster.sh {{.CLI_ARGS}}
 
   apply:
-    dir: ./terraform/setup-k3s
+    dir: ./terraform
     desc: Apply the cluster with Terraform
     cmds:
       - terraform apply
   destroy:
-    dir: ./terraform/setup-k3s
+    dir: ./terraform
     desc: Destroy the cluster with Terraform
     cmds:
-      - terraform destory
+      - terraform destroy
 
   lint:
     desc: Lints all important files
@@ -39,7 +39,7 @@ tasks:
   lint:sh:
     desc: Lints shell scripts
     cmds:
-      - shellcheck **/*.sh
+      - for file in $(find . -type f -name "*.sh"); do shellcheck $file; done;
 
   fmt:
     desc: Run all formatting supported.

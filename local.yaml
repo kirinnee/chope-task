@@ -1,11 +1,11 @@
 global:
   email:
-    display_name: 'GitLab'
-    from: 'gitlab@localhost'
-    reply_to: 'noreply@localhost'
+    display_name: "GitLab"
+    from: "gitlab@localhost"
+    reply_to: "noreply@localhost"
   smtp:
     enabled: true
-    address: 'localhost'
+    address: "localhost"
     tls: false
     authentication: ""
     domain: localhost

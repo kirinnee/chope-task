@@ -1,4 +1,11 @@
 repos:
+  - repo: git://github.com/antonbabenko/pre-commit-terraform
+    rev: v1.51.0
+    hooks:
+      - id: terraform_fmt
+      - id: terraform_docs
+      - id: terraform_validate
+
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.0.1
     hooks:
@@ -15,35 +22,28 @@ repos:
     hooks:
       - id: lint
         name: Lints files
-        entry: pls lint
+        entry: task lint
         files: ^.*\.sh$
-        pass_filenames: false
-        language: system
-
-      - id: json-fmt
-        name: Format JSON with prettier
-        entry: pls fmt:json
-        files: ^.*\.json$
         pass_filenames: false
         language: system
 
       - id: yaml-fmt
         name: Format YAML with prettier
-        entry: pls fmt:yaml
+        entry: task fmt:yaml
         files: ^.*\.(yaml|yml)$
         pass_filenames: false
         language: system
 
       - id: md-fmt
         name: Format Markdown with prettier
-        entry: pls fmt:md
+        entry: task fmt:md
         files: ^.*\.(MD|md)$
         pass_filenames: false
         language: system
 
       - id: nixpkgs-fmt
         name: Format NIX files
-        entry: pls fmt:nix
+        entry: task fmt:nix
         files: ^.*\.nix$
         language: system
         pass_filenames: false

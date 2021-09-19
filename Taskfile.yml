@@ -21,12 +21,10 @@ tasks:
       - ./scripts/local/delete-k3d-cluster.sh {{.CLI_ARGS}}
 
   apply:
-    dir: ./terraform
     desc: Apply the cluster with Terraform
     cmds:
       - terraform apply
   destroy:
-    dir: ./terraform
     desc: Destroy the cluster with Terraform
     cmds:
       - terraform destroy

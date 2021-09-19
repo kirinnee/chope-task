@@ -39,44 +39,48 @@ Linting & Code Quality
 
 
 ## Secrets And Credentials
-Create the following files with credentials substituted:
-`.env`
-```
-DIGITALOCEAN_TOKEN=<your Digital Ocean API Token
-```
 
-`id.pub` - your SSH public key (for SSH-ing into machines)
+Create the following **files** with credentials substituted:
+- `.env`
+    ```
+    DIGITALOCEAN_TOKEN=<your Digital Ocean API Token
+    ```
+
+- `id.pub` - your SSH public key (for SSH-ing into machines)
 
 # Local Development
 
-Configure Local Cluster in `k3d-default.yaml`
+- Configure Local Cluster in `k3d-default.yaml`
 
-Configure Local GitLab deployment in local.yaml
 
-Start Local Cluster
-```
-task start
-```
-and visit http://gitlab.127.0.0.1.nip.io
 
-Stop Local Cluster
-```
-task stop
-```
+- Configure Local GitLab deployment in local.yaml
+
+
+- Start Local Cluster
+    ```
+    task start
+    ```
+    and visit http://gitlab.127.0.0.1.nip.io
+
+- Stop Local Cluster
+    ```
+    task stop
+    ```
 
 # Cloud Deployment
-1. Configure VM Cluster by checking the [Terraform Documentation](# Terraform Documentation)
-2. Configure GitLab helm values file in `terraform/gitlab-helm/resource.tf`, within `yamlencode`.
+- Configure VM Cluster by checking the [Terraform Documentation](# Terraform Documentation)
+- Configure GitLab helm values file in `terraform/gitlab-helm/resource.tf`, within `yamlencode`.
 
-Deploy the cluster:
-```
-task apply
-```
+- Deploy the cluster:
+    ```
+    task apply
+    ```
 
-Destroy the cluster
-```
-task destroy
-```
+- Destroy the cluster
+    ```
+    task destroy
+    ```
 
 
 # Terraform Documentation

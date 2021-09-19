@@ -50,12 +50,11 @@ Create the following **files** with credentials substituted:
 
 # Local Development
 
-- Configure Local Cluster in `k3d-default.yaml`
+> Note that GitLab runner doesn't work locally due host not having a addressable IP
 
+- Configure Local Cluster in `k3d-default.yaml` (see [k3d configuration](https://k3d.io/usage/configfile/))
 
-
-- Configure Local GitLab deployment in local.yaml
-
+- Configure Local GitLab deployment in local.yaml (see [gitlab helm chart](https://docs.gitlab.com/charts/charts/globals.html))
 
 - Start Local Cluster
     ```
@@ -68,9 +67,12 @@ Create the following **files** with credentials substituted:
     task stop
     ```
 
+#### Local Cluster Architecture diagram
+![Local deployment](./local-dev.svg)
+
 # Cloud Deployment
 - Configure VM Cluster by checking the [Terraform Documentation](#terraform-documentation)
-- Configure GitLab helm values file in `terraform/gitlab-helm/resource.tf`, within `yamlencode`.
+- Configure GitLab helm values file in `terraform/gitlab-helm/resource.tf`, within `yamlencode`.  (see [gitlab helm chart](https://docs.gitlab.com/charts/charts/globals.html))
 
 - Deploy the cluster:
     ```

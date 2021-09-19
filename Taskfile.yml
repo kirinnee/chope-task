@@ -23,7 +23,14 @@ tasks:
   apply:
     desc: Apply the cluster with Terraform
     cmds:
+      - terraform init
       - terraform apply
+      - task: info
+  info:
+    desc: Show GitLab information
+    cmds:
+      - "echo GitLab URL: $(terraform output -json | jq .gitlab_address.value) && echo Root Password: $(terraform output -json | jq .initial_secret.value.password)"
+
   destroy:
     desc: Destroy the cluster with Terraform
     cmds:

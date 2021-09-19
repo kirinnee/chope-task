@@ -4,6 +4,8 @@ resource "helm_release" "gitlab" {
   chart      = "gitlab"
   version    = "5.2.4"
 
+
+  timeout = 3000
   values = [
     yamlencode({
       global = {

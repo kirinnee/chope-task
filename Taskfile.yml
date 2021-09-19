@@ -1,5 +1,6 @@
 version: "3"
-
+dotenv:
+  - .env
 tasks:
   cfg:scripts:
     desc: Configure Scripts to be executable
@@ -9,18 +10,26 @@ tasks:
     desc: Gets GitLab root password
     cmds:
       - kubectl get secret gitlab-gitlab-initial-root-password -ojsonpath='{.data.password}' | base64 --decode ; echo
-  up:
+  start:
     desc: Setup local cluster
     cmds:
       - ./scripts/local/create-k3d-cluster.sh {{.CLI_ARGS}}
       - ./scripts/local/helm-deploy-gitlab.sh
-  down:
+  stop:
     desc: Clears local cluster
     cmds:
       - ./scripts/local/delete-k3d-cluster.sh {{.CLI_ARGS}}
 
   apply:
-
+    dir: ./terraform/setup-k3s
+    desc: Apply the cluster with Terraform
+    cmds:
+      - terraform apply
+  destroy:
+    dir: ./terraform/setup-k3s
+    desc: Destroy the cluster with Terraform
+    cmds:
+      - terraform destory
 
   lint:
     desc: Lints all important files

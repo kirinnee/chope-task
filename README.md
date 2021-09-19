@@ -84,6 +84,8 @@ Create the following **files** with credentials substituted:
     task destroy
     ```
 
+#### Cloud Cluster Architecture Diagram
+![Cloud Deployment](./server.svg)
 
 # Terraform Documentation
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

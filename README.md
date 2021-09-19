@@ -69,7 +69,7 @@ Create the following **files** with credentials substituted:
     ```
 
 # Cloud Deployment
-- Configure VM Cluster by checking the [Terraform Documentation](# Terraform Documentation)
+- Configure VM Cluster by checking the [Terraform Documentation](#terraform-documentation)
 - Configure GitLab helm values file in `terraform/gitlab-helm/resource.tf`, within `yamlencode`.
 
 - Deploy the cluster:
